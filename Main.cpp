@@ -8,7 +8,7 @@
 int main()
 {
 	//WINDOW 
-	sf::RenderWindow window(sf::VideoMode(1360, 860), "Snake!", sf::Style::None);
+	sf::RenderWindow window(sf::VideoMode(1360, 780), "Snake!", sf::Style::None);
 	window.setFramerateLimit(60);
 	sf::Event evnt;
 	//RANDOMIZING

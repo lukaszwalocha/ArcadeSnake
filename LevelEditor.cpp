@@ -166,7 +166,7 @@ void LevelEditor::barrierRespCollision(sf::RenderWindow &window, sf::RectangleSh
 		if (fobj.appleSprite.getGlobalBounds().intersects(barrier[i].getGlobalBounds()))
 		{
 			fobj.appleSprite.setPosition(rand() % int(window.getSize().x - 0.1*window.getSize().x), rand() % int(window.getSize().y - 0.1*window.getSize().y));
-			std::cout << "buch" << std::endl;
+			
 		}
 
 	}
@@ -211,9 +211,9 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 			rectArray[i].setSize(sf::Vector2f(100, 100));
 			rectArray[i].setFillColor(sf::Color::Blue);
 			if (i <= 1)
-				rectArray[i].setPosition(110, 100 + i * 600);
+				rectArray[i].setPosition(110, 100 + i * 500);
 			else if (i == 2)
-				rectArray[i].setPosition(1110, 700);
+				rectArray[i].setPosition(1110, 600);
 			else
 				rectArray[i].setPosition(1110, 100);
 			
@@ -322,9 +322,9 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 			rectArray[i].setSize(sf::Vector2f(100, 100));
 			rectArray[i].setFillColor(sf::Color::Blue);
 			if (i <= 1)
-				rectArray[i].setPosition(110, 100 + i * 600);
+				rectArray[i].setPosition(110, 100 + i * 500);
 			else if (i == 2)
-				rectArray[i].setPosition(1110, 700);
+				rectArray[i].setPosition(1110, 600);
 			else
 				rectArray[i].setPosition(1110, 100);
 			window.draw(rectArray[i]);
@@ -483,9 +483,9 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 			rectArray[i].setSize(sf::Vector2f(100, 100));
 			rectArray[i].setFillColor(sf::Color::Magenta);
 			if (i <= 1)
-				rectArray[i].setPosition(110, 100 + i * 600);
+				rectArray[i].setPosition(110, 100 + i * 500);
 			else if (i == 2)
-				rectArray[i].setPosition(1110, 700);
+				rectArray[i].setPosition(1110, 600);
 			else
 				rectArray[i].setPosition(1110, 100);
 			window.draw(rectArray[i]);
@@ -493,18 +493,23 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 		
 		for (int i = 0; i < 4; i++)
 		{
-			lines7Array[i].setSize(sf::Vector2f(340, 20));
+			lines7Array[i].setSize(sf::Vector2f(340, 19));
 			lines7Array[i].setFillColor(sf::Color::Yellow);
 
-			if (i >= 0 && i <= 1)
+			if (i == 0)
 			{
-				lines7Array[i].setPosition(170+i*1000, 280);
+				lines7Array[i].setPosition(171 , 240);
+				lines7Array[i].rotate(90);
+			}
+			else if (i >= 0 && i <= 1)
+			{
+				lines7Array[i].setPosition(170+i*1000, 240);
 				lines7Array[i].rotate(90);
 			}
 			else if (i >= 2 && i <= 3)
 			{
 				lines7Array[2].setPosition(470,140);
-				lines7Array[3].setPosition(470, 700);
+				lines7Array[3].setPosition(470, 660);
 			}
 
 
@@ -529,13 +534,13 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 			
 			if (i == 0 )
 			{
-				outlines[i].setSize(sf::Vector2f(740, 15));
+				outlines[i].setSize(sf::Vector2f(640, 15));
 				outlines[i].rotate(90);
 				outlines[i].setPosition(110+i*1180, 60);
 			}
 			if (i == 1)
 			{
-				outlines[i].setSize(sf::Vector2f(740, 20));
+				outlines[i].setSize(sf::Vector2f(640, 20));
 				outlines[i].rotate(90);
 				outlines[i].setPosition(110 + i * 1180, 60);
 			}
@@ -544,7 +549,7 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 				outlines[2].setSize(sf::Vector2f(1170, 20));
 				outlines[3].setSize(sf::Vector2f(1070, 20));
 				outlines[2].setPosition(100, 60);
-				outlines[3].setPosition(100, 780);
+				outlines[3].setPosition(100, 680);
 			}
 
 			window.draw(outlines[i]);
@@ -564,9 +569,15 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 		{
 			outlines[i].setFillColor(sf::Color::Blue);
 
-			if (i >= 0 && i <= 1)
+			if (i == 0)
 			{
-				outlines[i].setSize(sf::Vector2f(740, 20));
+				outlines[i].setSize(sf::Vector2f(640, 15));
+				outlines[i].rotate(90);
+				outlines[i].setPosition(110 + i * 1180, 60);
+			}
+			if (i == 1)
+			{
+				outlines[i].setSize(sf::Vector2f(640, 20));
 				outlines[i].rotate(90);
 				outlines[i].setPosition(110 + i * 1180, 60);
 			}
@@ -575,7 +586,7 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 				outlines[2].setSize(sf::Vector2f(1170, 20));
 				outlines[3].setSize(sf::Vector2f(1070, 20));
 				outlines[2].setPosition(100, 60);
-				outlines[3].setPosition(100, 780);
+				outlines[3].setPosition(100, 680);
 			}
 
 			window.draw(outlines[i]);
@@ -638,7 +649,38 @@ void LevelEditor::drawBarrier(sf::RenderWindow &window, unsigned int &level, std
 		barrierSnakeCollision(window, line3Array, 11, snakeVector, playerAlive);
 		barrierSnakeCollision(window, outlines, 4, snakeVector, playerAlive);
 	}break;
+	case 10:{
 
+		for (int i = 0; i < 4; i++)
+		{
+			outlines[i].setFillColor(sf::Color::Blue);
+
+			if (i == 0)
+			{
+				outlines[i].setSize(sf::Vector2f(440, 20));
+				
+				outlines[i].setPosition(110 + i * 1180, 420);
+			}
+			if (i == 1)
+			{
+				outlines[i].setSize(sf::Vector2f(440, 20));
+				
+				outlines[i].setPosition(110 + i * 680, 360);
+			}
+			else if (i >= 2 && i <= 3)
+			{
+				outlines[2].setSize(sf::Vector2f(460, 20));
+				outlines[3].setSize(sf::Vector2f(460, 20));
+				outlines[2].setPosition(210, 160);
+				outlines[3].setPosition(710, 680);
+			}
+
+			window.draw(outlines[i]);
+		}
+	
+		barrierSnakeCollision(window, outlines, 4, snakeVector, playerAlive);
+
+	}break;
 	}
 	
 }

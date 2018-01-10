@@ -72,24 +72,24 @@ void Player::snakeMove(sf::RenderWindow &window, bool &isPressed, Player&snakeOb
 		
 	}
 	//CONTROL KEYS
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) && actualDir != RIGHT && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)))
+	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) && actualDir != RIGHT && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)))
 		{
 
 			actualDir = LEFT;
 
 		}
-		else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) ||sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) && actualDir != DOWN&& !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)))
+	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) && actualDir != DOWN&& !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)))
 		{
 			actualDir = UP;
 
 		}
-		else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) && actualDir != UP&& !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)))
+	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) && actualDir != UP&& !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)))
 		{
 
 			actualDir = DOWN;
 
 		}
-		else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) && actualDir != LEFT && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)))
+	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) && actualDir != LEFT && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)))
 		{
 			actualDir = RIGHT;
 		}
@@ -202,7 +202,7 @@ void::Player::acrossTheWall(sf::RenderWindow &window, std::vector<Player> &snake
 			snakeVector[i].playerBody.setPosition(window.getSize().x-window.getSize().x+10, snakeVector[i].playerBody.getPosition().y);
 		}
 		//BOTTOM WALL PROTECTION
-		else if (snakeVector[i].playerBody.getPosition().y > 859)
+		else if (snakeVector[i].playerBody.getPosition().y > 779)
 		{
 			snakeVector[i].playerBody.setPosition(snakeVector[i].playerBody.getPosition().x, window.getSize().y-window.getSize().y+20);
 		}
